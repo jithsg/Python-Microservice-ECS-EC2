@@ -19,10 +19,9 @@ killweb:
 
 lint:
 	#pylint --disable=R,C main.py
-
 deploy:
-	aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 185183796631.dkr.ecr.us-east-1.amazonaws.com
-	docker build -t ecs-ec2-demo .
-	docker tag ecs-ec2-demo:latest 185183796631.dkr.ecr.us-east-1.amazonaws.com/ecs-ec2-demo:latest
-	docker push 185183796631.dkr.ecr.us-east-1.amazonaws.com/ecs-ec2-demo:latest
+	aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 185183796631.dkr.ecr.us-east-2.amazonaws.com
+	docker build -t ecs-demo .
+	docker tag ecs-demo:latest 185183796631.dkr.ecr.us-east-2.amazonaws.com/ecs-demo:latest
+	docker push 185183796631.dkr.ecr.us-east-2.amazonaws.com/ecs-demo:latest
 all: install lint
